@@ -483,13 +483,15 @@ h3 {
 }
 
 .contact-links a {
-  min-height: 2.7rem;
+  width: 3.3rem;
+  height: 3.3rem;
+  min-height: 3.3rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.55rem 0.95rem;
+  padding: 0;
   border: 1px solid var(--line-strong);
-  border-radius: 6px;
+  border-radius: 999px;
   color: var(--ink);
   text-decoration: none;
 }
@@ -497,6 +499,41 @@ h3 {
 .contact-links a:hover {
   background: rgba(244, 238, 231, 0.08);
   border-color: rgba(197, 154, 80, 0.6);
+}
+
+.contact-icon {
+  width: 1.45rem;
+  height: 1.45rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.logo-glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.logo-researchgate {
+  font-size: 0.96rem;
+}
+
+.logo-linkedin {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 3px;
+  background: currentColor;
+  color: var(--bg);
+  font-family: Arial, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
 }
 
 .site-footer {
@@ -565,20 +602,18 @@ h3 {
 }
 
 @media (max-width: 420px) {
-  .intro-actions,
-  .contact-links {
+  .intro-actions {
     flex-direction: column;
     align-items: stretch;
   }
 
   .primary-link,
-  .secondary-link,
-  .contact-links a {
+  .secondary-link {
     width: 100%;
   }
 }
 
-</style>
+    </style>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
@@ -716,8 +751,7 @@ h3 {
               </li>
             </ol>
             <div class="publication-actions">
-              <a href="https://orcid.org/0000-0003-4338-3876" rel="noopener">Full ORCID record</a>
-              <a href="https://scholar.google.com/citations?view_op=search_authors&mauthors=Andrew%20Fu%20Wah%20Ho%20Emergency%20Medicine%20Resuscitation" rel="noopener">Google Scholar</a>
+              <a href="https://scholar.google.com/citations?user=xpIPIQEAAAAJ&amp;hl=en" rel="noopener">Google Scholar</a>
             </div>
           </div>
         </div>
@@ -733,11 +767,31 @@ h3 {
             </p>
           </div>
           <div class="contact-links" aria-label="Contact links">
-            <a href="https://scholar.google.com/citations?view_op=search_authors&mauthors=Andrew%20Fu%20Wah%20Ho%20Emergency%20Medicine%20Resuscitation" rel="noopener">Google Scholar</a>
-            <a href="https://www.researchgate.net/search/researcher?q=Andrew%20Fu%20Wah%20Ho%20Emergency%20Medicine%20Resuscitation" rel="noopener">ResearchGate</a>
-            <a href="https://calendly.com/afwho" rel="noopener">Calendly</a>
-            <a href="https://www.linkedin.com/search/results/people/?keywords=Andrew%20Fu%20Wah%20Ho%20Emergency%20Medicine%20Resuscitation" rel="noopener">LinkedIn</a>
-            <a href="https://orcid.org/0000-0003-4338-3876" rel="noopener">ORCID</a>
+            <a class="icon-link" href="https://scholar.google.com/citations?user=xpIPIQEAAAAJ&amp;hl=en" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
+              <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3 3 10.2l9 7.2 9-7.2L12 3Z"></path>
+                <path d="M7.2 13.2v3.3c0 1.7 2.1 3 4.8 3s4.8-1.3 4.8-3v-3.3"></path>
+              </svg>
+            </a>
+            <a class="icon-link" href="https://www.researchgate.net/profile/Andrew-Ho-2?ev=hdr_xprf&amp;_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6ImhvbWUiLCJwYWdlIjoiaG9tZSIsInBvc2l0aW9uIjoiZ2xvYmFsSGVhZGVyIn19" rel="noopener" aria-label="ResearchGate" title="ResearchGate">
+              <span class="logo-glyph logo-researchgate" aria-hidden="true">RG</span>
+            </a>
+            <a class="icon-link" href="https://calendly.com/sophronesis/new-meeting" rel="noopener" aria-label="Calendly" title="Calendly" data-protected-link="calendly">
+              <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="5" width="16" height="15" rx="2"></rect>
+                <path d="M8 3v4M16 3v4M4 10h16"></path>
+                <path d="M8 14h3M8 17h6"></path>
+              </svg>
+            </a>
+            <a class="icon-link" href="https://www.linkedin.com/in/andrew-fu-wah-ho-0b998756/" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+              <span class="logo-glyph logo-linkedin" aria-hidden="true">in</span>
+            </a>
+            <a class="icon-link" href="mailto:sophronesis@gmail.com" aria-label="Email" title="Email">
+              <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect>
+                <path d="m4.5 7 7.5 6 7.5-6"></path>
+              </svg>
+            </a>
           </div>
         </div>
       </section>
@@ -765,6 +819,22 @@ navAnchors.forEach((link) => {
     navToggle?.setAttribute("aria-expanded", "false");
   });
 });
+
+document
+  .querySelector('[data-protected-link="calendly"]')
+  ?.addEventListener("click", (event) => {
+    const calendlyLink = event.currentTarget;
+    const password = window.prompt("Enter the password to schedule an appointment.");
+
+    if (password !== "12345") {
+      event.preventDefault();
+      window.alert("Password is needed to schedule an appointment");
+      return;
+    }
+
+    event.preventDefault();
+    window.location.href = calendlyLink.href;
+  });
 
 const sections = navAnchors
   .map((link) => document.querySelector(link.getAttribute("href")))
