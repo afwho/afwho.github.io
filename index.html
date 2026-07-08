@@ -913,7 +913,7 @@ h3 {
         </button>
         <h2 id="calendly-password-title">Schedule appointment</h2>
         <p>Enter the password to continue to Calendly.</p>
-        <form id="calendly-password-form" novalidate>
+        <form id="calendly-password-form" action="https://calendly.com/sophronesis/new-meeting" method="get" novalidate>
           <label for="calendly-password">Password</label>
           <input id="calendly-password" type="password" autocomplete="current-password">
           <p class="password-error" id="calendly-password-error" role="alert" hidden>
@@ -957,7 +957,6 @@ document
     openCalendlyModal();
   });
 
-const calendlyHref = "https://calendly.com/sophronesis/new-meeting";
 const calendlyModal = document.querySelector("#calendly-modal");
 const calendlyForm = document.querySelector("#calendly-password-form");
 const calendlyPassword = document.querySelector("#calendly-password");
@@ -980,13 +979,11 @@ document.querySelectorAll("[data-calendly-close]").forEach((control) => {
 });
 
 calendlyForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
-
   if (calendlyPassword.value === "12345") {
-    window.location.assign(calendlyHref);
     return;
   }
 
+  event.preventDefault();
   calendlyPassword.setAttribute("aria-invalid", "true");
   calendlyPasswordError.hidden = false;
   calendlyPassword.focus();
