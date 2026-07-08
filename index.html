@@ -536,6 +536,105 @@ h3 {
   font-weight: 800;
 }
 
+.password-modal[hidden] {
+  display: none;
+}
+
+.password-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.password-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 9, 13, 0.78);
+  backdrop-filter: blur(10px);
+}
+
+.password-dialog {
+  position: relative;
+  width: min(100%, 25rem);
+  padding: 1.4rem;
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.password-dialog h2 {
+  padding-right: 2rem;
+  font-size: 1.45rem;
+}
+
+.password-dialog p {
+  margin: 0.65rem 0 1rem;
+  color: var(--muted);
+}
+
+.password-dialog label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 730;
+}
+
+.password-dialog input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+}
+
+.password-dialog input:focus {
+  outline: 2px solid rgba(197, 154, 80, 0.7);
+  outline-offset: 2px;
+}
+
+.password-dialog .password-error {
+  color: #ffb6b6;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.modal-actions button {
+  cursor: pointer;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: rgba(244, 238, 231, 0.08);
+}
+
 .site-footer {
   width: min(100% - 2rem, var(--max-width));
   margin: 0 auto;
@@ -610,6 +709,10 @@ h3 {
   .primary-link,
   .secondary-link {
     width: 100%;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
   }
 }
 
@@ -797,6 +900,33 @@ h3 {
       </section>
     </main>
 
+    <div class="password-modal" id="calendly-modal" hidden>
+      <div class="password-backdrop" data-calendly-close></div>
+      <section
+        class="password-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="calendly-password-title"
+      >
+        <button class="modal-close" type="button" data-calendly-close aria-label="Close password dialog">
+          <span aria-hidden="true">x</span>
+        </button>
+        <h2 id="calendly-password-title">Schedule appointment</h2>
+        <p>Enter the password to continue to Calendly.</p>
+        <form id="calendly-password-form" novalidate>
+          <label for="calendly-password">Password</label>
+          <input id="calendly-password" type="password" autocomplete="current-password">
+          <p class="password-error" id="calendly-password-error" role="alert" hidden>
+            Password is needed to schedule an appointment
+          </p>
+          <div class="modal-actions">
+            <button class="secondary-link" type="button" data-calendly-close>Cancel</button>
+            <button class="primary-link" type="submit">Continue</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
     <footer class="site-footer">
       <p>&copy; <span id="year"></span> Andrew Ho. Built for GitHub Pages.</p>
     </footer>
@@ -823,18 +953,52 @@ navAnchors.forEach((link) => {
 document
   .querySelector('[data-protected-link="calendly"]')
   ?.addEventListener("click", (event) => {
-    const calendlyLink = event.currentTarget;
-    const password = window.prompt("Enter the password to schedule an appointment.");
-
-    if (password !== "12345") {
-      event.preventDefault();
-      window.alert("Password is needed to schedule an appointment");
-      return;
-    }
-
     event.preventDefault();
-    window.location.href = calendlyLink.href;
+    openCalendlyModal(event.currentTarget.href);
   });
+
+const calendlyModal = document.querySelector("#calendly-modal");
+const calendlyForm = document.querySelector("#calendly-password-form");
+const calendlyPassword = document.querySelector("#calendly-password");
+const calendlyPasswordError = document.querySelector("#calendly-password-error");
+let pendingCalendlyHref = "";
+
+const openCalendlyModal = (href) => {
+  pendingCalendlyHref = href;
+  calendlyModal.hidden = false;
+  calendlyPassword.value = "";
+  calendlyPassword.removeAttribute("aria-invalid");
+  calendlyPasswordError.hidden = true;
+  calendlyPassword.focus();
+};
+
+const closeCalendlyModal = () => {
+  calendlyModal.hidden = true;
+  pendingCalendlyHref = "";
+};
+
+document.querySelectorAll("[data-calendly-close]").forEach((control) => {
+  control.addEventListener("click", closeCalendlyModal);
+});
+
+calendlyForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if (calendlyPassword.value === "12345") {
+    window.location.href = pendingCalendlyHref;
+    return;
+  }
+
+  calendlyPassword.setAttribute("aria-invalid", "true");
+  calendlyPasswordError.hidden = false;
+  calendlyPassword.focus();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !calendlyModal.hidden) {
+    closeCalendlyModal();
+  }
+});
 
 const sections = navAnchors
   .map((link) => document.querySelector(link.getAttribute("href")))
