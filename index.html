@@ -954,17 +954,16 @@ document
   .querySelector('[data-protected-link="calendly"]')
   ?.addEventListener("click", (event) => {
     event.preventDefault();
-    openCalendlyModal(event.currentTarget.href);
+    openCalendlyModal();
   });
 
+const calendlyHref = "https://calendly.com/sophronesis/new-meeting";
 const calendlyModal = document.querySelector("#calendly-modal");
 const calendlyForm = document.querySelector("#calendly-password-form");
 const calendlyPassword = document.querySelector("#calendly-password");
 const calendlyPasswordError = document.querySelector("#calendly-password-error");
-let pendingCalendlyHref = "";
 
-const openCalendlyModal = (href) => {
-  pendingCalendlyHref = href;
+const openCalendlyModal = () => {
   calendlyModal.hidden = false;
   calendlyPassword.value = "";
   calendlyPassword.removeAttribute("aria-invalid");
@@ -974,7 +973,6 @@ const openCalendlyModal = (href) => {
 
 const closeCalendlyModal = () => {
   calendlyModal.hidden = true;
-  pendingCalendlyHref = "";
 };
 
 document.querySelectorAll("[data-calendly-close]").forEach((control) => {
@@ -985,7 +983,7 @@ calendlyForm?.addEventListener("submit", (event) => {
   event.preventDefault();
 
   if (calendlyPassword.value === "12345") {
-    window.location.href = pendingCalendlyHref;
+    window.location.assign(calendlyHref);
     return;
   }
 
