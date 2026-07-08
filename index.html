@@ -331,6 +331,11 @@ h3 {
   align-items: start;
 }
 
+.section-inner-single {
+  width: min(100% - 2rem, 48rem);
+  grid-template-columns: 1fr;
+}
+
 .section-body p,
 .section-note,
 .contact-inner p {
@@ -352,11 +357,11 @@ h3 {
 
 .question-list {
   display: grid;
-  gap: 1.35rem;
+  gap: 2rem;
 }
 
 .question-item {
-  padding-bottom: 1.35rem;
+  padding-bottom: 2rem;
   border-bottom: 1px solid var(--line);
 }
 
@@ -366,7 +371,7 @@ h3 {
 }
 
 .question-item p {
-  margin: 0.55rem 0 0;
+  margin: 0.9rem 0 0;
   color: var(--muted);
 }
 
@@ -487,61 +492,28 @@ h3 {
   align-items: center;
   justify-content: center;
   padding: 0;
-  border: 1px solid var(--line-strong);
+  border: 1px solid rgba(244, 238, 231, 0.28);
   border-radius: 999px;
-  color: var(--ink);
+  background: #f7f5f0;
+  color: var(--bg);
   text-decoration: none;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
 }
 
 .contact-links a:hover {
-  background: rgba(244, 238, 231, 0.08);
+  background: #ffffff;
   border-color: rgba(197, 154, 80, 0.6);
+  transform: translateY(-1px);
 }
 
-.contact-icon {
-  width: 1.45rem;
-  height: 1.45rem;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.8;
-}
-
-.logo-glyph {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: currentColor;
-  font-weight: 800;
-  letter-spacing: 0;
-  line-height: 1;
-}
-
-.logo-researchgate {
-  font-size: 0.96rem;
-}
-
-.logo-linkedin {
-  width: auto;
-  height: auto;
-  background: transparent;
-  color: #ffffff;
-  font-family: Arial, sans-serif;
-  font-size: 1.25rem;
-  font-weight: 800;
-}
-
-.linkedin-link {
-  background: #0a66c2;
-  border-color: #0a66c2;
-  color: #ffffff;
-}
-
-.linkedin-link:hover {
-  background: #084f96;
-  border-color: #2f8de4;
-  color: #ffffff;
+.brand-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: block;
+  object-fit: contain;
 }
 
 .password-modal[hidden] {
@@ -767,8 +739,7 @@ h3 {
             My work explores how data and artificial intelligence can help
             clinicians make better decisions when time is short and the stakes
             are high. I'm especially interested in tools that are fair,
-            trustworthy, and useful in the real world - not just impressive in a
-            spreadsheet.
+            trustworthy, and useful in the real world.
           </p>
           <p class="lead">
             This site is a small home for the questions I keep returning to, the
@@ -811,34 +782,71 @@ h3 {
       </section>
 
       <section class="section" id="work" aria-labelledby="work-title">
-        <div class="section-inner">
-          <div class="section-heading">
-            <h2 id="work-title">Questions I keep returning to</h2>
-          </div>
+        <div class="section-inner section-inner-single">
           <div class="question-list">
             <article class="question-item">
-              <h3>How do we recognize critical illness earlier?</h3>
+              <h2 id="work-title">How can we spot trouble earlier?</h2>
               <p>
-                I study resuscitation, cardiac arrest, and emergency systems of
-                care - especially the gaps between what happens in the first few
-                minutes and what matters months or years later.
+                In emergencies, a few minutes can change everything. The earlier
+                we recognise that someone is seriously unwell, the earlier the
+                right help can begin.
+              </p>
+              <p>
+                I'm interested in how we can spot danger sooner - whether that
+                means recognising cardiac arrest before the ambulance arrives,
+                noticing subtle signs that someone is deteriorating, or using
+                technology to alert the right people at the right time.
+              </p>
+              <p>
+                Put simply: how do we help people get the care they need before
+                it becomes too late?
               </p>
             </article>
             <article class="question-item">
-              <h3>How can emergency care become more intelligent without becoming less human?</h3>
+              <h3>How can AI help without making healthcare less human?</h3>
               <p>
-                I work with clinical data, prediction models, and applied AI
-                methods, with a focus on tools that clinicians can trust,
-                question, and actually use.
+                Artificial intelligence is often talked about as if it is here
+                to replace people. I'm more interested in how it can help people
+                do their best work.
+              </p>
+              <p>
+                In emergency medicine, decisions are often made quickly, with
+                incomplete information, and under pressure. AI may help by
+                noticing patterns, reducing blind spots, and supporting
+                clinicians when things are busy or uncertain.
+              </p>
+              <p>
+                But it also needs guardrails. It should be fair. It should be
+                explainable. It should not quietly make care worse for certain
+                groups of people. Most importantly, it should help doctors and
+                nurses pay more attention to patients - not less.
+              </p>
+              <p>
+                The goal is not colder, faster medicine. The goal is better
+                care.
               </p>
             </article>
             <article class="question-item">
-              <h3>What are we missing in cardiovascular emergencies?</h3>
+              <h3>What are we missing when someone comes in with chest pain, fainting, or palpitations?</h3>
               <p>
-                I'm interested in acute myocardial infarction, emergency
-                cardiology, cardiogenic shock, and the diagnostic grey zones
-                where patients may be very sick before the ECG or label makes it
-                obvious.
+                Many people come to the emergency department with symptoms that
+                are worrying but unclear. Chest pain. Fainting. A racing
+                heartbeat. Breathlessness. A strange feeling that something is
+                not quite right.
+              </p>
+              <p>
+                Most of the time, these symptoms are not due to something
+                life-threatening. But sometimes they are.
+              </p>
+              <p>
+                One of the hardest parts of emergency medicine is working out
+                who needs urgent treatment, who needs more tests, and who can
+                safely go home. I'm interested in how we can make those decisions
+                more accurately, more fairly, and with less guesswork.
+              </p>
+              <p>
+                Because sometimes the most important diagnosis is the one that
+                is easy to miss.
               </p>
             </article>
           </div>
@@ -893,35 +901,22 @@ h3 {
           <div>
             <p class="eyebrow">Contact</p>
             <h2 id="contact-title">Find me online.</h2>
-            <p>
-              Links to my research profiles and scheduling page.
-            </p>
           </div>
           <div class="contact-links" aria-label="Contact links">
             <a class="icon-link" href="https://scholar.google.com/citations?user=xpIPIQEAAAAJ&amp;hl=en" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
-              <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 3 3 10.2l9 7.2 9-7.2L12 3Z"></path>
-                <path d="M7.2 13.2v3.3c0 1.7 2.1 3 4.8 3s4.8-1.3 4.8-3v-3.3"></path>
-              </svg>
+              <img class="brand-icon" src="https://cdn.simpleicons.org/googlescholar/4285f4" alt="" width="28" height="28">
             </a>
             <a class="icon-link" href="https://www.researchgate.net/profile/Andrew-Ho-2?ev=hdr_xprf&amp;_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6ImhvbWUiLCJwYWdlIjoiaG9tZSIsInBvc2l0aW9uIjoiZ2xvYmFsSGVhZGVyIn19" rel="noopener" aria-label="ResearchGate" title="ResearchGate">
-              <span class="logo-glyph logo-researchgate" aria-hidden="true">RG</span>
+              <img class="brand-icon" src="https://cdn.simpleicons.org/researchgate/00ccbb" alt="" width="28" height="28">
             </a>
             <a class="icon-link" href="https://calendly.com/sophronesis/new-meeting" rel="noopener" aria-label="Calendly" title="Calendly" data-protected-link="calendly">
-              <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="4" y="5" width="16" height="15" rx="2"></rect>
-                <path d="M8 3v4M16 3v4M4 10h16"></path>
-                <path d="M8 14h3M8 17h6"></path>
-              </svg>
+              <img class="brand-icon" src="https://cdn.simpleicons.org/calendly/006bff" alt="" width="28" height="28">
             </a>
-            <a class="icon-link linkedin-link" href="https://www.linkedin.com/in/andrew-fu-wah-ho-0b998756/" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
-              <span class="logo-glyph logo-linkedin" aria-hidden="true">in</span>
+            <a class="icon-link" href="https://www.linkedin.com/in/andrew-fu-wah-ho-0b998756/" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+              <img class="brand-icon" src="https://cdn.simpleicons.org/linkedin/0a66c2" alt="" width="28" height="28">
             </a>
             <a class="icon-link" href="mailto:sophronesis@gmail.com" aria-label="Email" title="Email">
-              <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect>
-                <path d="m4.5 7 7.5 6 7.5-6"></path>
-              </svg>
+              <img class="brand-icon" src="https://cdn.simpleicons.org/gmail/ea4335" alt="" width="28" height="28">
             </a>
           </div>
         </div>
