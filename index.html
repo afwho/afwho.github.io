@@ -268,7 +268,7 @@ h3 {
 
 .lead {
   max-width: 41rem;
-  margin: 1.35rem 0 0;
+  margin: 1rem 0 0;
   color: var(--muted);
   font-size: clamp(1.08rem, 2vw, 1.27rem);
 }
@@ -350,54 +350,47 @@ h3 {
   font-size: 0.98rem;
 }
 
-.item-list {
+.question-list {
   display: grid;
-  gap: 1rem;
+  gap: 1.35rem;
 }
 
-.item-card {
-  padding: 1.2rem 1.25rem;
-  background: var(--surface-raised);
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--burgundy-bright);
-  border-radius: 8px;
+.question-item {
+  padding-bottom: 1.35rem;
+  border-bottom: 1px solid var(--line);
 }
 
-.item-card:nth-child(2) {
-  border-left-color: var(--brass);
+.question-item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 
-.item-card:nth-child(3) {
-  border-left-color: var(--teal);
-}
-
-.item-card p {
+.question-item p {
   margin: 0.55rem 0 0;
   color: var(--muted);
 }
 
 .publication-list {
   display: grid;
-  gap: 1rem;
+  gap: 0.85rem;
   margin: 0;
   padding: 0;
-  list-style: none;
+  list-style-position: outside;
+  padding-left: 1.35rem;
 }
 
 .publication-list li {
-  padding: 1rem 1.1rem;
-  background: var(--surface-raised);
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--brass);
-  border-radius: 8px;
+  padding-left: 0.25rem;
+  color: var(--muted);
 }
 
 .publication-list a {
-  display: inline-block;
+  display: inline;
   color: var(--ink);
-  font-weight: 730;
+  font-weight: 620;
   line-height: 1.35;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: rgba(197, 154, 80, 0.4);
 }
 
 .publication-list a:hover {
@@ -405,10 +398,14 @@ h3 {
 }
 
 .publication-list span {
-  display: block;
-  margin-top: 0.45rem;
+  display: inline;
+  margin-left: 0.25rem;
   color: var(--muted);
   font-size: 0.94rem;
+}
+
+.publication-list span::before {
+  content: "- ";
 }
 
 .publication-actions {
@@ -526,14 +523,25 @@ h3 {
 }
 
 .logo-linkedin {
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 3px;
-  background: currentColor;
-  color: var(--bg);
+  width: auto;
+  height: auto;
+  background: transparent;
+  color: #ffffff;
   font-family: Arial, sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   font-weight: 800;
+}
+
+.linkedin-link {
+  background: #0a66c2;
+  border-color: #0a66c2;
+  color: #ffffff;
+}
+
+.linkedin-link:hover {
+  background: #084f96;
+  border-color: #2f8de4;
+  color: #ffffff;
 }
 
 .password-modal[hidden] {
@@ -748,15 +756,27 @@ h3 {
           >
         </div>
         <div class="intro-copy">
-          <p class="eyebrow">Personal website</p>
           <h1 id="intro-title">Hi! I'm Andrew.</h1>
           <p class="lead">
-            I am a researcher in emergency medicine, resuscitation, and
-            emergency cardiology. This site gathers my publications, projects,
-            and professional links in one place.
+            I'm an emergency physician and researcher interested in the moments
+            where medicine becomes urgent, uncertain, and very human:
+            resuscitation, cardiovascular emergencies, and the systems that
+            shape population health.
+          </p>
+          <p class="lead">
+            My work explores how data and artificial intelligence can help
+            clinicians make better decisions when time is short and the stakes
+            are high. I'm especially interested in tools that are fair,
+            trustworthy, and useful in the real world - not just impressive in a
+            spreadsheet.
+          </p>
+          <p class="lead">
+            This site is a small home for the questions I keep returning to, the
+            projects I'm building, and the ideas I'm still thinking through.
+            LinkedIn can keep the CV. This is where I try to sound a little more
+            like a person.
           </p>
           <div class="intro-actions" aria-label="Quick links">
-            <a class="primary-link" href="#publications">View publications</a>
             <a class="secondary-link" href="#contact">Get in touch</a>
           </div>
         </div>
@@ -766,18 +786,25 @@ h3 {
         <div class="section-inner">
           <div class="section-heading">
             <p class="eyebrow">About</p>
-            <h2 id="about-title">Emergency medicine, resuscitation, and emergency cardiology.</h2>
+            <h2 id="about-title">Who is Andrew?</h2>
           </div>
           <div class="section-body">
             <p>
-              I work across emergency medicine, cardiac arrest, resuscitation,
-              emergency cardiology, clinical outcomes, and applied data methods.
-              This site is designed to keep the research easy to scan without
-              getting in the way.
+              Outside work, family life is where I am most reliably reminded
+              that not everything important can be measured, predicted, triaged,
+              or optimized.
             </p>
             <p>
-              The publication list below is seeded from my public ORCID record
-              and can be refreshed as new work appears there.
+              It keeps me grounded in ordinary things: meals, routines, small
+              jokes, minor chaos, and the humbling discovery that clinical
+              decision-making is sometimes easier than getting everyone out of
+              the house on time.
+            </p>
+            <p>
+              That part of life quietly shapes how I think about medicine and
+              technology. The best tools should not make us less attentive to
+              people. They should help us notice more, care better, and make
+              room for what matters.
             </p>
           </div>
         </div>
@@ -786,30 +813,32 @@ h3 {
       <section class="section" id="work" aria-labelledby="work-title">
         <div class="section-inner">
           <div class="section-heading">
-            <p class="eyebrow">Selected Work</p>
-            <h2 id="work-title">Research themes and current interests.</h2>
+            <h2 id="work-title">Questions I keep returning to</h2>
           </div>
-          <div class="item-list">
-            <article class="item-card">
-              <h3>Resuscitation outcomes</h3>
+          <div class="question-list">
+            <article class="question-item">
+              <h3>How do we recognize critical illness earlier?</h3>
               <p>
-                Work on cardiac arrest systems of care, dispatcher-assisted CPR,
-                post-resuscitation outcomes, and survival after sudden cardiac
-                arrest.
+                I study resuscitation, cardiac arrest, and emergency systems of
+                care - especially the gaps between what happens in the first few
+                minutes and what matters months or years later.
               </p>
             </article>
-            <article class="item-card">
-              <h3>Emergency medicine analytics</h3>
+            <article class="question-item">
+              <h3>How can emergency care become more intelligent without becoming less human?</h3>
               <p>
-                Forecasting, registry studies, environmental exposure analyses,
-                and applied AI methods for emergency care delivery.
+                I work with clinical data, prediction models, and applied AI
+                methods, with a focus on tools that clinicians can trust,
+                question, and actually use.
               </p>
             </article>
-            <article class="item-card">
-              <h3>Emergency cardiology</h3>
+            <article class="question-item">
+              <h3>What are we missing in cardiovascular emergencies?</h3>
               <p>
-                Research spanning acute myocardial infarction, cardiogenic shock,
-                aortic stenosis, and cardiovascular outcomes.
+                I'm interested in acute myocardial infarction, emergency
+                cardiology, cardiogenic shock, and the diagnostic grey zones
+                where patients may be very sick before the ECG or label makes it
+                obvious.
               </p>
             </article>
           </div>
@@ -820,10 +849,9 @@ h3 {
         <div class="section-inner">
           <div class="section-heading">
             <p class="eyebrow">Publications</p>
-            <h2 id="publications-title">Recent publications.</h2>
+            <h2 id="publications-title">Publications</h2>
             <p class="section-note">
-              Seeded from my public ORCID record and refreshed in the browser
-              when ORCID is reachable.
+              A simple list drawn from my Google Scholar profile.
             </p>
           </div>
           <div>
@@ -886,7 +914,7 @@ h3 {
                 <path d="M8 14h3M8 17h6"></path>
               </svg>
             </a>
-            <a class="icon-link" href="https://www.linkedin.com/in/andrew-fu-wah-ho-0b998756/" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+            <a class="icon-link linkedin-link" href="https://www.linkedin.com/in/andrew-fu-wah-ho-0b998756/" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
               <span class="logo-glyph logo-linkedin" aria-hidden="true">in</span>
             </a>
             <a class="icon-link" href="mailto:sophronesis@gmail.com" aria-label="Email" title="Email">
@@ -998,96 +1026,6 @@ document.addEventListener("keydown", (event) => {
 const sections = navAnchors
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
-
-const fallbackPublications = [
-  {
-    year: "2026",
-    title: "Categories of Aortic Stenosis: What's New and the Clinical Implications",
-    journal: "Medicina",
-    link: "https://doi.org/10.3390/medicina62050819",
-  },
-  {
-    year: "2026",
-    title:
-      "Transformers Outperform Traditional Forecasting Models and Perform Comparably to Recurrent Neural Networks in the Prediction of Emergency Department Visits using Calendar and Meteorological Data",
-    journal: "Artificial Intelligence in Emergency Medicine",
-    link: "https://doi.org/10.1016/j.aiemed.2026.100006",
-  },
-  {
-    year: "2026",
-    title:
-      "Health impacts of micro- and nanoplastics in humans: systematic review of in vivo evidence",
-    journal: "Environmental Health",
-    link: "https://doi.org/10.1186/s12940-026-01282-y",
-  },
-  {
-    year: "2025",
-    title: "Pan-Asian Resuscitation Outcomes Study (PAROS)",
-    journal: "JACC: Asia",
-    link: "https://doi.org/10.1016/j.jacasi.2025.09.016",
-  },
-  {
-    year: "2025",
-    title:
-      "Inpatient-Onset Versus Outpatient-Onset ST-Segment-Elevation Myocardial Infarction in Patients With Percutaneous Coronary Intervention: A National Registry Study",
-    journal: "Journal of the American Heart Association",
-    link: "https://doi.org/10.1161/JAHA.124.038727",
-  },
-  {
-    year: "2025",
-    title:
-      "Prevalence of Depression, Anxiety and Post-Traumatic Stress Disorder (PTSD) After Acute Myocardial Infarction: A Systematic Review and Meta-Analysis",
-    journal: "Journal of Clinical Medicine",
-    link: "https://doi.org/10.3390/jcm14061786",
-  },
-];
-
-const renderPublications = (publications) => {
-  const list = document.querySelector("#publication-list");
-  if (!list || !publications.length) return;
-
-  list.replaceChildren(
-    ...publications.slice(0, 8).map(({ title, journal, year, link }) => {
-      const item = document.createElement("li");
-      const anchor = document.createElement("a");
-      const meta = document.createElement("span");
-
-      anchor.href = link;
-      anchor.rel = "noopener";
-      anchor.textContent = title;
-      meta.textContent = [journal, year].filter(Boolean).join(", ");
-
-      item.append(anchor, meta);
-      return item;
-    }),
-  );
-};
-
-const normalizeOrcidWorks = (data) =>
-  (data.group || [])
-    .map((group) => group["work-summary"]?.[0])
-    .filter(Boolean)
-    .map((work) => {
-      const title = work.title?.title?.value || "";
-      const date = work["publication-date"] || {};
-      const year = date.year?.value || "";
-      const month = date.month?.value || "";
-      const journal = work["journal-title"]?.value || "";
-      const doi = (work["external-ids"]?.["external-id"] || []).find(
-        (item) => item["external-id-type"] === "doi",
-      );
-      const link = doi?.["external-id-url"]?.value || work.url?.value || "#";
-      return { title, journal, year, month, link };
-    })
-    .filter((work) => work.title)
-    .sort((a, b) => `${b.year}${b.month}`.localeCompare(`${a.year}${a.month}`));
-
-fetch("https://pub.orcid.org/v3.0/0000-0003-4338-3876/works", {
-  headers: { Accept: "application/json" },
-})
-  .then((response) => (response.ok ? response.json() : Promise.reject(response)))
-  .then((data) => renderPublications(normalizeOrcidWorks(data)))
-  .catch(() => renderPublications(fallbackPublications));
 
 const activeSectionObserver = new IntersectionObserver(
   (entries) => {
